@@ -1,33 +1,32 @@
 function appendContents(db_infos){
     // db_infos = [(youtube_id, title, singer), (youtube_id, title, singer),...]
 
-    console.log("myScript")
-    console.log(Date.now())
-    var infos = db_infos
+    console.log("myScript");
+    console.log(Date.now());
+    var infos = db_infos;
     var players = [];
     if(onYouTubeIframeAPIReady){
         window.YT.ready(function(){
             $("#glider").children().remove();
-            console.log("youtube contents")
-            console.log(Date.now())
+            console.log("youtube contents");
+            console.log(Date.now());
             // db_infos 리스트로 검색결과
             for(var i in infos){
-                var youtubeId = infos[i][0]
-                var title = infos[i][1]
-                var singer = infos[i][2]
-                var div_id = '<div class="content-box-wrapper" id="'+youtubeId+'"></div>'
-                var div_tag = $(div_id)
-                div_tag.appendTo($(".glider"))
-                // i가 나중에 (유튜브아이디, 제목, 가수) 로 들어갈것
+                var youtubeId = infos[i][0];
+                var title = infos[i][1];
+                var singer = infos[i][2];
+                var div_id = '<div class="content-box-wrapper" id="'+youtubeId+'"></div>';
+                var div_tag = $(div_id);
+                div_tag.appendTo($(".glider"));
                 var pl = createContentBox($(div_tag), infos[i][0]);
-                players.push(pl)
+                players.push(pl);
                 
                 var info_tag = '<div class="song_info" data-singer="'+singer+'" data-title="'+ title +'">'+title+'-'+singer+'</div>';
                 $(info_tag).appendTo($(div_tag));
-                console.log(i)
-            }
+                console.log(i);
+            };
         });
-    }         
+    };
 };
 
 

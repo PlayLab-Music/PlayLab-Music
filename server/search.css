@@ -215,6 +215,24 @@ iframe{
 .SetCenter{text-align:center;}
 .SetDisplayNone{display:none;}
 
+#auto-box{
+	position: absolute;
+	overflow-y: auto;
+	z-index: 100;
+	max-height: 200px;
+	background: rgba(237, 221, 238, 0.137);
+} 
+
+#auto-box li{
+	list-style: none;
+	padding: 8px 12px;
+	width: 100%;
+	cursor: default;
+	border-radius: 3px;
+}
+#auto-box li:hover{
+	background: rgb(240, 183, 235);
+}
 
 
 

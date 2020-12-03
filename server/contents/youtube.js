@@ -120,6 +120,27 @@ function youTubePlayerPercent(player){
     }
 }
 
+// Add time slider
+
+function youTubePlayerCurrentTimeChange(player, currentTime) {
+    'use strict';
+    console.log("time_player",player)
+    console.log("time_cur",currentTime)
+
+    // player.personalPlayer.currentTimeSliding = false;
+    // if (youTubePlayerActive()) {
+    //     player.seekTo(currentTime*player.getDuration()/100, true);
+    // }
+}
+
+function youTubePlayerCurrentTimeSlide(player) {
+    'use strict';
+    console.log("slider",player)
+
+    // player.personalPlayer.currentTimeSliding = true;
+}
+
+
 //check api loaded
 function onYouTubeIframeAPIReady(){
     return true

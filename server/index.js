@@ -1,14 +1,6 @@
 $(document).ready(function(){
-    var players = [];
-    var backgroundPos = $(".container").get(0).style.backgroundPosition
     // 스크롤 업
-    $("html, body").animate({scrollTop: 0}, 500);   
- 
-    $(window).scroll(function () {
-        var height = $(document).scrollTop();
-        console.log(height);
-        
-    });
+    $("*").animate({scrollTop: 567*2}, 1);
 
     function stars(){
         var count = 30;
@@ -25,28 +17,28 @@ $(document).ready(function(){
             star.style.top = y+"px"
             star.style.width = 1+size+"px"
             star.style.height = 1+size+"px"
-
             star.style.animationDuration = 5 + duration + 's'
             star.style.animationDelay = duration + 's'
 
             scene.appendChild(star);
             i++;
-
         }
     }
     stars();
 
     $("*").scroll(function(){
-
         var curY = this.scrollTop
         var main = $(".container").get(0)
         main.style.backgroundPosition = `-${curY * .25}px 0px`
     
         var navbar = $(".navbar").get(0);
         navbar.classList.toggle("sticky", curY > 0);
+    });
+
+    $("input").keydown(function(e){
+        console.log(e);
+        $("input").caret(0)
     })
-
-
 });
 
           // 자동 재생기능 추가 예정
