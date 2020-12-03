@@ -13,23 +13,21 @@ $(document).ready(function(){
           var dbInfos;
           
           // 함수구현
-
-          //dbInfos = '[["bqfOALK0qnc","0","1"],["GP5t5ZYfgZw","1","1"],["XSj14Bg3cPE","2","2"],["JBMpAOuDLbg","3","3"], ["O1JUyyNHROc","4","4"],["X_sR3nyL-q8","5","5"], ["7kII76zHLRg","6","6"], ["LvANkO6Wfjc","7","7"], ["GHb5ox62bKM","8","8"]]'
-
-var param = {name: '가시 - 버즈'}
-$.ajax({
-   type: 'POST',
-   url: '/2.php',
-   data: param,
-   dataType: 'json',
-   success: function(data){
-//        console.log(data);
-//	alert(data);
-//          dbInfos = JSON.parse(data);
-          appendContents(data);
-   }
-});
-
+          
+          var param = {name: '가시 - 버즈'}
+          $.ajax({
+            type: 'POST',
+            url: './2.php',
+            data: param,
+            dataType: 'json',
+            success: function(data){
+                    appendContents(data);
+            },
+            error: function(){
+              dbInfos = [["bqfOALK0qnc","0","1"],["GP5t5ZYfgZw","1","1"],["XSj14Bg3cPE","2","2"],["JBMpAOuDLbg","3","3"], ["O1JUyyNHROc","4","4"],["X_sR3nyL-q8","5","5"], ["7kII76zHLRg","6","6"], ["LvANkO6Wfjc","7","7"], ["GHb5ox62bKM","8","8"]]
+              appendContents(dbInfos)
+            }
+          });
           
         }else{
           // 자동완성기능
