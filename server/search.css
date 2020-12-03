@@ -220,7 +220,6 @@ iframe{
 	overflow-y: auto;
 	z-index: 100;
 	max-height: 200px;
-	background: rgba(237, 221, 238, 0.137);
 } 
 
 #auto-box li{
@@ -229,6 +228,9 @@ iframe{
 	width: 100%;
 	cursor: default;
 	border-radius: 3px;
+	background: rgb(240, 183, 235, 0.1);
+	margin-bottom: 1px;
+	font-size: 15px;
 }
 #auto-box li:hover{
 	background: rgb(240, 183, 235);

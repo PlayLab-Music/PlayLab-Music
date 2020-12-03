@@ -9,53 +9,26 @@ $(document).ready(function(){
     // 검색창 마우스 포커싱
     $(".search-bar")
       .keyup(function(e){
-        if(e.keyCode==13){
-          var searchInput = $("#TxtSearch").val()
-          // 자모음 분리로 db검색후 반환
-          var dbInfos;
-          var autoLists;
-          
-          // 함수구현
-          
-          var param = {name: searchInput}
-          $.ajax({
-            type: 'POST',
-            url: './2.php',
-            data: param,
-            dataType: 'json',
-            success: function(data){
-                    appendContents(data);
-            },
-            error: function(){
-              dbInfos = [["bqfOALK0qnc","0","1"],["GP5t5ZYfgZw","1","1"],["XSj14Bg3cPE","2","2"],["JBMpAOuDLbg","3","3"], ["O1JUyyNHROc","4","4"],["X_sR3nyL-q8","5","5"], ["7kII76zHLRg","6","6"], ["LvANkO6Wfjc","7","7"], ["GHb5ox62bKM","8","8"]]
-              appendContents(dbInfos)
-            }
-          });
-          
-        }else{
-          // 자동완성기능
-          var splitInput = Hangul.disassemble($("#TxtSearch").val());
-          var joinedInput = splitInput.join("");
-	        var autoParam = {name : joinedInput}
-          $.ajax({
-	          type: 'POST',
-            url: './1.php',
-            data: autoParam,
-            dataType: 'json',
-            success: function(data){
-              console.log(data);
-		          autocomplete(data);
-            },
-            error: function(data){
-              autoLists = ["sing0 - 0","sing1 - 1","sing2 - 2","sing3 - 3","sing4 - 4","sing5 - 5"]
-              autocomplete(autoLists)
-            }
-          });
+        // 자동완성기능
+        var splitInput = Hangul.disassemble($("#TxtSearch").val());
+        var joinedInput = splitInput.join("");
+        var autoParam = {name : joinedInput}
+        $.ajax({
+          type: 'POST',
+          url: './1.php',
+          data: autoParam,
+          dataType: 'json',
+          success: function(data){
+            console.log(data);
+            autocomplete(data);
+          },
+          error: function(data){
+            var autoLists = ["sing0 - 0","sing1 - 1","sing2 - 2","sing3 - 3","sing4 - 4","sing5 - 5"]
+            autocomplete(autoLists)
+          }
+        });
 
-        };
       });
-
-
 });
 
           // 자동 재생기능 추가 예정
