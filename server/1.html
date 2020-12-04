@@ -1,0 +1,498 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+ 
+  <title>YouTube iframe API example</title>
+  
+  
+  
+  
+      <style>
+      main {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+main > section { margin-bottom: 1em; }
+
+main > section div.framed > div {
+    border: 1px solid black;
+    margin-bottom: 1ex;
+    padding: 1ex;
+}
+
+main > section button { padding: 0.5ex 1em; }
+
+main > section input[type="range"] { width: 350px; }
+
+main > section label[for^="YouTube-player-"] { position: absolute; }
+
+main > section textarea {
+    height: 9ex;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    width: 99%;
+}
+
+
+.center { text-align: center; }
+
+.margin-left-m { margin-left: 1em; }
+.margin-right-m { margin-right: 1em; }
+
+.nowrap { white-space: nowrap; }
+
+
+#indicator-display {
+    background-color: #f0f0f0;
+    border-radius: 3ex;
+    display: inline-block;
+    float: right;
+    font-family: monospace;
+    height: 2ex;
+    line-height: 2ex;
+    margin: 1ex 1ex 0 0;
+    padding: 1ex;
+    text-align: left;
+    vertical-align: middle;
+    width: 2ex;
+}
+
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+    main > section iframe {
+      height: 200px;
+      width: 200px;
+    }
+
+    main > section input[type="range"] { width: 200px; }
+}
+
+    </style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body translate="no" >
+
+  <main>
+  <section>
+    <div class="center">
+      <h2>YouTube new look</h2>
+  <span class="nowrap margin-left-m margin-right-m">
+          
+          <input id="YouTube-video-id" type="text"  value="yG0oBPtyNb0" size="12"  onchange="youTubePlayerChangeVideoId();"> 
+
+  <span><br> 
+          <button onclick="document.getElementById('YouTube-video-id').value='yG0oBPtyNb0'; youTubePlayerChangeVideoId();" title="In the summertime (Mungo Jerry)">1</button>
+          <button onclick="document.getElementById('YouTube-video-id').value='F2Ug3VkFuDw'; youTubePlayerChangeVideoId();" title="Peter Popoff pris la main dans le sac par James Randi">2</button>
+          <button onclick="document.getElementById('YouTube-video-id').value='1X9RvuSuU_Y'; youTubePlayerChangeVideoId();" title="The Steven Seagal Show #002">3</button>
+          
+        </span>
+<br><br>
+        </span><center>
+<div id="YouTube-player" style="margin-bottom:-50px;" name="a_blank"></div><div   style="width:100%;height:55px;z-index:1;position:absolute;background:white;"><div style="width:400px;background:red;text-align:left;margin-left:-52px;" ><i onclick="youTubePlayerPlay();" class="fa fa-play" style="margin-left:20px;"></i> 
+          <i onclick="youTubePlayerPause();"  class="fa fa-pause"> </i>  
+          <i onclick="youTubePlayerStop();" class="fa fa-stop"> </i></div></div>
+     
+
+     
+
+       <br>
+          </center>
+     
+
+      <div  style="margin-top:55px;">
+        <input id="YouTube-player-progress" type="range" value="1" min="0" max="100" onchange="youTubePlayerCurrentTimeChange(this.value);" oninput="youTubePlayerCurrentTimeSlide();" class="slider">
+        <label for="YouTube-player-progress">duration</label>
+      </div>
+
+      <div>
+        <input id="YouTube-player-volume" type="range" value="50" min="0" max="100" onchange="youTubePlayerVolumeChange(this.value);" class="slider">
+        <label for="YouTube-player-volume">volume</label>
+      </div>
+    </div>
+
+    <div class="framed">
+  <div id="YouTube-player-infos"><span id="indicator-display" title="timing of informations refreshing">|</span</div>
+     
+    </div>
+  </section>
+
+</main>
+  
+
+  
+  
+
+    <script >
+
+
+/**
+ * YT.Player initialized by onYouTubeIframeAPIReady().
+ */
+var youTubePlayer;
+
+
+
+
+function onYouTubeIframeAPIReady() {
+    'use strict';
+
+    var inputVideoId = document.getElementById('YouTube-video-id');
+    var videoId = inputVideoId.value;
+    var suggestedQuality = 'tiny';
+    var height = 300;
+    var width = 400;
+    var name = "a_blank";
+
+    var youTubePlayerVolumeItemId = 'YouTube-player-volume';
+
+
+    function onError(event) {
+        youTubePlayer.personalPlayer.errors.push(event.data);
+    }
+
+
+    function onReady(event) {
+        var player = event.target;
+
+        player.loadVideoById({suggestedQuality: suggestedQuality,
+                              videoId: videoId,
+                               title:title
+                             });
+        player.pauseVideo();
+        youTubePlayerDisplayFixedInfos();
+    }
+
+
+    function onStateChange(event) {
+        var volume = Math.round(event.target.getVolume());
+        var volumeItem = document.getElementById(youTubePlayerVolumeItemId);
+
+        if (volumeItem && (Math.round(volumeItem.value) != volume)) {
+            volumeItem.value = volume;
+        }
+    }
+
+
+    youTubePlayer = new YT.Player('YouTube-player',
+                                  {videoId: videoId,
+                                   height: height,
+                                   width: width,
+                                  name: name,
+                                   playerVars: {'autohide': 1,
+                                                'cc_load_policy': 0,
+                                                'controls':1,
+                                                'disablekb': 0,
+                                                'iv_load_policy': 0,
+                                                'modestbranding': 0,
+                                                'rel': 0,
+                                                'showinfo': 0,
+
+                                                 'autoplay':1,
+                                                'start': 3
+                                               },
+                                   events: {'onError': onError,
+                                            'onReady': onReady,
+                                            'onStateChange': onStateChange
+                                           }
+                                  });
+
+    // Add private data to the YouTube object
+    youTubePlayer.personalPlayer = {'currentTimeSliding': false,
+                                    'errors': []};
+}
+
+function youTubePlayerActive() {
+    'use strict';
+
+    return youTubePlayer && youTubePlayer.hasOwnProperty('getPlayerState');
+}
+
+
+
+function youTubePlayerChangeVideoId() {
+    'use strict';
+
+    var inputVideoId = document.getElementById('YouTube-video-id');
+    var videoId = inputVideoId.value;
+
+    youTubePlayer.cueVideoById({suggestedQuality: 'tiny',
+                                videoId: videoId
+                               });
+    youTubePlayer.pauseVideo();
+    youTubePlayerDisplayFixedInfos();
+}
+
+
+
+
+function youTubePlayerCurrentTimeChange(currentTime) {
+    'use strict';
+
+    youTubePlayer.personalPlayer.currentTimeSliding = false;
+    if (youTubePlayerActive()) {
+        youTubePlayer.seekTo(currentTime*youTubePlayer.getDuration()/100, true);
+    }
+}
+
+
+/**
+ * Mark that the HTML slider move.
+ */
+function youTubePlayerCurrentTimeSlide() {
+    'use strict';
+
+    youTubePlayer.personalPlayer.currentTimeSliding = true;
+}
+
+
+ 
+function youTubePlayerDisplayFixedInfos() {
+    'use strict';
+
+    if (youTubePlayerActive()) {
+        document.getElementById('YouTube-player-fixed-infos').innerHTML = (
+            "Embed code: <input readonly value='" + youTubePlayer.getVideoEmbedCode() + youTubePlayer.getVideoTitle() + "' >"   
+        );
+    }
+}
+
+function youTubePlayerDisplayInfos() {
+    'use strict';
+
+    if ((this.nbCalls === undefined) || (this.nbCalls >= 3)) {
+        this.nbCalls = 0;
+    }
+    else {
+        ++this.nbCalls;
+    }
+
+    var indicatorDisplay = '<span id="indicator-display" title="timing of informations refreshing">tv</span>';
+
+    if (youTubePlayerActive()) {
+        var state = youTubePlayer.getPlayerState();
+
+        var current = youTubePlayer.getCurrentTime();
+        var duration = youTubePlayer.getDuration();
+ 
+        var currentPercent = (current && duration
+                              ? current*100/duration
+                              : 0);
+
+        var fraction = (youTubePlayer.hasOwnProperty('getVideoLoadedFraction')
+                        ? youTubePlayer.getVideoLoadedFraction()
+                        : 0);
+
+        var url = youTubePlayer.getVideoUrl();
+
+        if (!current) {
+            current = 0;
+        }
+        if (!duration) {
+            duration = 0;
+        }
+
+        var volume = youTubePlayer.getVolume();
+
+        if (!youTubePlayer.personalPlayer.currentTimeSliding) {
+            document.getElementById('YouTube-player-progress').value = currentPercent;
+        }
+
+        document.getElementById('YouTube-player-infos').innerHTML = (
+            indicatorDisplay
+                + 'URL: <a class="url" href="' + url + '">' + url + '</a><br>'
+                + 'Quality: <strong>' + youTubePlayer.getPlaybackQuality() + '</strong>'
+                + ' — Available quality: <strong>' + youTubePlayer.getAvailableQualityLevels() + '</strong><br>'
+                + 'State <strong>' + state + '</strong>: <strong>' + youTubePlayerStateValueToDescription(state) + '</strong><br>'
+                + 'Loaded: <strong>' + (fraction*100).toFixed(1) + '</strong>%<br>'
+                + 'Duration: <strong>' + current.toFixed(2) + '</strong>/<strong>' + duration.toFixed(2) + '</strong>s = <strong>' + currentPercent.toFixed(2) + '</strong>%<br>'
+                + 'Volume: <strong>' + volume +  '</strong>%'
+        );
+
+        document.getElementById('YouTube-player-errors').innerHTML = '<div>Errors: <strong>' + youTubePlayer.personalPlayer.errors + '</strong></div>';
+    }
+    else {
+        document.getElementById('YouTube-player-infos').innerHTML = indicatorDisplay;
+    }
+}
+
+
+
+function youTubePlayerPause() {
+    'use strict';
+
+    if (youTubePlayerActive()) {
+        youTubePlayer.pauseVideo();
+    }
+}
+
+
+
+function youTubePlayerPlay() {
+    'use strict';
+
+    if (youTubePlayerActive()) {
+        youTubePlayer.playVideo();
+    }
+}
+
+
+
+function youTubePlayerStateValueToDescription(state, ) {
+    'use strict';
+
+    var STATES = {'-1': 'unstarted',   // YT.PlayerState.
+                  '0': '结束',        // YT.PlayerState.ENDED
+                  '1': '<b>播放...</b>',      // YT.PlayerState.PLAYING
+                  '2': '定格',       // YT.PlayerState.PAUSED
+                  '3': '缓冲...',    // YT.PlayerState.BUFFERING
+                  '5': '停止'};  // YT.PlayerState.CUED
+
+    return (state in STATES
+            ? STATES[state]
+            : unknow);
+}
+
+
+ 
+function youTubePlayerStop() {
+    'use strict';
+
+    if (youTubePlayerActive()) {
+        youTubePlayer.stopVideo();
+        youTubePlayer.clearVideo();
+    }
+}
+
+
+ 
+function youTubePlayerVolumeChange(volume) {
+    'use strict';
+
+    if (youTubePlayerActive()) {
+        youTubePlayer.setVolume(volume);
+    }
+}
+
+
+
+ 
+(function () {
+    'use strict';
+
+    function init() {
+        // Load YouTube library
+        var tag = document.createElement('script');
+
+        tag.src = 'https://www.youtube.com/iframe_api';
+
+        var first_script_tag = document.getElementsByTagName('script')[0];
+
+        first_script_tag.parentNode.insertBefore(tag, first_script_tag);
+
+
+        // Set timer to display infos
+        setInterval(youTubePlayerDisplayInfos, 1000);
+    }
+
+
+    if (window.addEventListener) {
+        window.addEventListener('load', init);
+    } else if (window.attachEvent) {
+        window.attachEvent('onload', init);
+    }
+}());
+     
+    </script>
+
+
+
+  
+  
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
