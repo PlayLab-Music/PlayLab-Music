@@ -17,12 +17,14 @@ function appendContents(db_infos){
                 var singer = infos[i][2];
                 var div_id = '<div class="content-box-wrapper" id="'+youtubeId+'"></div>';
                 var div_tag = $(div_id);
+
+               
                 div_tag.appendTo($(".glider"));
                 var pl = createContentBox($(div_tag), infos[i][0]);
                 players.push(pl);
-                
                 var info_tag = '<div class="song_info" data-singer="'+singer+'" data-title="'+ title +'">'+title+'-'+singer+'</div>';
                 $(info_tag).appendTo($(div_tag));
+
                 console.log(i);
             };
         });

@@ -28,14 +28,14 @@ function autocomplete(sugLists){
                 var param = {name: searchInput}
                 $.ajax({
                     type: 'POST',
-                    url: './2.php',
+                    url: '/2.php',
                     data: param,
                     dataType: 'json',
                     success: function(data){
                             appendContents(data);
                     },
                     error: function(){
-                    dbInfos = [["bqfOALK0qnc","0","1"],["GP5t5ZYfgZw","1","1"],["XSj14Bg3cPE","2","2"],["JBMpAOuDLbg","3","3"], ["O1JUyyNHROc","4","4"],["X_sR3nyL-q8","5","5"], ["7kII76zHLRg","6","6"], ["LvANkO6Wfjc","7","7"], ["GHb5ox62bKM","8","8"]]
+                    dbInfos = [["bqfOALK0qnc","dsadsadasfafsafsadcz","fasddcczvcdva"],["GP5t5ZYfgZw","1","1"],["XSj14Bg3cPE","2","2"],["JBMpAOuDLbg","3","3"], ["O1JUyyNHROc","4","4"],["X_sR3nyL-q8","5","5"], ["7kII76zHLRg","6","6"], ["LvANkO6Wfjc","7","7"], ["GHb5ox62bKM","8","8"]]
                     appendContents(dbInfos)
                     }
                 });

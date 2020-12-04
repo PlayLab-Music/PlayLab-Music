@@ -18,21 +18,20 @@ html, body {
 	display: flex;
 	align-items: center;
 	margin-bottom: 50px;
+	padding-bottom: 20px;
 	margin:0;
 }
 
 .glider-contain {
-    position: absolute;
-    padding:0;
-    margin:0;
+    position: relative;
+	padding:0;
+	margin: 0;
     top: 10vh;
     width: 95%;
     margin: 0 auto;
     min-height: 200px;
     min-width: 200px;
     position: relative;
-    margin-bottom: 100px;
-    
 }
 
 .glider {
@@ -41,7 +40,12 @@ html, body {
     margin:0;
     display: flex;
     flex-direction: row;
-    height: 100%;
+	height: 120%;
+	min-height: 300px;
+}
+
+#glider {
+	margin-bottom: 30px;
 }
 
 .content-box-wrapper{
@@ -52,15 +56,17 @@ html, body {
     margin-bottom: 10%;
     max-height: 50vw;
     min-width: 50vw;
-    margin-left: 40px;
+	margin-left: 40px;
+	display: flex;
+	flex-direction: column;
 }
   
 .content-box {
     position: relative;
     vertical-align: top;
     min-width: 80%;
-    min-height: 250px;
-    margin-left: 40px;
+    min-height: 220px;
+	margin-left: 40px;
 }
 
 iframe{
@@ -72,9 +78,12 @@ iframe{
 }
 
 .song-info{
-	position: absolute;
-	color:white;
+	position: relative;
+	height: 30px;
+	max-width: 200px;
+	color:rgb(138, 91, 91);
 	z-index: 1000;
+	margin-left: 40px;
 }
 
 

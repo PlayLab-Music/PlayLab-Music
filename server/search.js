@@ -23,7 +23,7 @@ $(document).ready(function(){
             autocomplete(data);
           },
           error: function(data){
-            var autoLists = ["sing0 - 0","sing1 - 1","sing2 - 2","sing3 - 3","sing4 - 4","sing5 - 5"]
+            var autoLists = ["singsdasfasfsaf0 - 0fdsvfdvfdvsdcs","sing1 - 1","sing2 - 2","sing3 - 3","sing4 - 4","sing5 - 5"]
             autocomplete(autoLists)
           }
         });
