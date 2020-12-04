@@ -1,27 +1,20 @@
-
-function createContentBox(parentNode, youtube_id, isShow=true){
+var tester = true;
+function createContentBox(parentNode, youtube_id){
     // parentNode will be jquery elem
     // id will be number or youtube 
     var player;
     //create content box
-    var content_box = '<div class="content-box '+ youtube_id + '"></div>'
-    content_box = $(content_box)
-    content_box.hide()
 
     //youtube video box
     var code = youtube_id
     var youtube_video = '<div id="video-' + youtube_id + '"></div>'
     youtube_video = $(youtube_video)
     youtube_video.appendTo(parentNode)
-    player = createPlayer("video-"+youtube_id, code, 80, 80)
+    player = createPlayer("video-"+youtube_id, code, "150", "150")
     player_tag = "#video-"+youtube_id
-    $(player_tag).appendTo(content_box)
-
-    content_box.appendTo(parentNode);
-    if(isShow){
-        content_box.show()
-    }
-
+    $(player_tag).appendTo(parentNode)
+    parentNode.data("player",player)
+    console.log(player)
 
     //add function
     // $(".content-box")
@@ -31,19 +24,21 @@ function createContentBox(parentNode, youtube_id, isShow=true){
     // .mouseleave(function(e){
     //     $(this).css('transform', 'scale(1.0)')
     // });
-    content_box.on("tap",function(e){
-        if(youTubePlayerState(player)==1){
-            console.log("1")
-            youTubePlayerPause(player);
-        }else{
-        youTubePlayerPlay(player);
-        // var lego = youTubePlayerPercent(player)
-        function lego(){
-            youTubePlayerPercent(player)
-        }
-        setInterval(lego, 1000)
-        };
-    });
+    // console.log(window.tester)
+    // parentNode.on("tap",function(e){
+        
+    //     if(youTubePlayerState(player)==1){
+    //         youTubePlayerPause(player);
+    //     }else{
+    //     youTubePlayerPlay(player);
+    //     // var lego = youTubePlayerPercent(player)
+    //     function lego(){
+    //         youTubePlayerPercent(player)
+    //     }
+    //     setInterval(lego, 1000)
+    //     };
+    // });
+
 
 
     // content_box.mouseenter(function(e){

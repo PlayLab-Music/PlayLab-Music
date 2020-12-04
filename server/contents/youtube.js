@@ -36,8 +36,8 @@ function createPlayer(div_tag, id, height, width) {
 
     var player = new YT.Player(div_tag,
                                 {videoId: videoId,
-                                height: "150",
-                                width: "150",
+                                height: height,
+                                width: width,
                                 name: name,
                                 playerVars: {'autohide': 1,
                                                 'cc_load_policy': 0,

@@ -10,7 +10,6 @@ function autocomplete(swiper, sugLists){
 
     if(sugLists){
         for(var i in sugLists){
-            console.log(sugLists[i])
             var suggestItem = '<li class="auto-active" value="'+ sugLists[i] +'">'+ sugLists[i] + '</li>'
             var suggestTag = $(suggestItem)
             suggestTag.appendTo($("#auto-box"))

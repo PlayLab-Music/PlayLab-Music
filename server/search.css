@@ -74,6 +74,16 @@ body {
 	width:1px
 }
 
+.player-info{
+	color: #fff;
+}
+.player-title{
+	font-size: 30px;
+}
+.player-singer{
+	font-size: 20px;
+}
+
 
 /* search bar css */
 

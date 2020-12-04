@@ -23,12 +23,15 @@ $(document).ready(function () {
   var infos = [["bqfOALK0qnc", "dsadsadasfafsafsadcz", "fasddcczvcdva"], ["GP5t5ZYfgZw", "1", "1"], ["XSj14Bg3cPE", "2", "2"], ["JBMpAOuDLbg", "3", "3"], ["O1JUyyNHROc", "4", "4"], ["X_sR3nyL-q8", "5", "5"], ["7kII76zHLRg", "6", "6"], ["LvANkO6Wfjc", "7", "7"], ["GHb5ox62bKM", "8", "8"]]
   swiper.removeAllSlides()
 
+  window.player = null;
+
   //  검색창 마우스 포커싱
   $(".search-bar")
     .keyup(function (e) {
       // 자동완성기능
       var splitInput = Hangul.disassemble($("#TxtSearch").val());
-      var joinedInput = splitInput.join("");
+      var joinedInput = splitInput.join("").replace(" ","");
+      console.log(joinedInput)
       var autoParam = { name: joinedInput }
       $.ajax({
         type: 'POST',
@@ -42,11 +45,22 @@ $(document).ready(function () {
         error: function (data) {
           var autoLists = ["singsdasfasfsaf0 - 0fdsvfdvfdvsdcs", "sing1 - 1", "sing2 - 2", "sing3 - 3", "sing4 - 4", "sing5 - 5"]
           autocomplete(swiper, autoLists)
-          swiper.removeSlide([0, 1]);
         }
       });
 
     });
+  
+  swiper.on('touchEnd', function(e){
+    if(window.player == getPlayer()){
+      console.log("same")
+    }else{
+      window.player = getPlayer();
+      setPlayerInfo();
+    }
+    
+    
+  });
+
 });
 
 
