@@ -139,8 +139,8 @@ section {
     transform: scale(0.2);
     height:10vh;
     width:10vw;
-    top: 55vh;
-    left: 75vw;
+    bottom: 35vh;
+    right: 15vw;
     z-index : -1;
 }
 .mountain img{
