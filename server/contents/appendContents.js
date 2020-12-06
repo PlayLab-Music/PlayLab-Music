@@ -17,6 +17,7 @@ function appendContents(db_infos){
                 var singer = infos[i][2];
                 var div_id = '<div class="content-box-wrapper" id="'+youtubeId+'"></div>';
                 var div_tag = $(div_id);
+<<<<<<< HEAD
 
                
                 div_tag.appendTo($(".glider"));
@@ -25,6 +26,14 @@ function appendContents(db_infos){
                 var info_tag = '<div class="song_info" data-singer="'+singer+'" data-title="'+ title +'">'+title+'-'+singer+'</div>';
                 $(info_tag).appendTo($(div_tag));
 
+=======
+                div_tag.appendTo($(".glider"));
+                var pl = createContentBox($(div_tag), infos[i][0]);
+                players.push(pl);
+                
+                var info_tag = '<div class="song_info" data-singer="'+singer+'" data-title="'+ title +'">'+title+'-'+singer+'</div>';
+                $(info_tag).appendTo($(div_tag));
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
                 console.log(i);
             };
         });

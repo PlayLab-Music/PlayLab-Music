@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Glider/glider.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="search.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="./Glider/glider.js"></script>
     <script src="https://unpkg.com/hangul-js" type="text/javascript"></script>
-
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script src="./contents/autocomplete.js"></script>
     <script src="./contents/youtube.js"></script>
     <script src="./contents/contentBox.js"></script>
     <script src="./contents/appendContents.js"></script>
-    <script src="./contents/appendSliders.js"></script>
     
     <script type="module" src="./search.js" defer></script>
     
@@ -49,25 +46,19 @@
 
                     </div>
                 </div>
-                
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
+                <div class="glider-contain">
+                    <div class="glider" id="glider">
+                        
                     </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-scrollbar"></div>
+                </div>
+                <div class="song-info">
+                    <div class="title"></div>
+                    <div class="singer"></div>
                 </div>
             </div>
-            
-            <div class="controller">
-                <div class="player-info">
-                    <!-- <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div> -->
-                    <div class="player-title"></div>
-                    <div class="player-singer"></div>
-                </div>    
-                <div id="time-slider">
-                    <input id="YouTube-player-progress" type="range" value="1" min="0" max="100" data-bi="pl" onchange="youTubePlayerCurrentTimeChange(this.value);" oninput="youTubePlayerCurrentTimeSlide();" class="slider">
-                </div>
+            <div id="timeSlider">
+                <input id="YouTube-player-progress" type="range" value="1" min="0" max="100" data-bi="pl" onchange="youTubePlayerCurrentTimeChange('pl',this.value);" oninput="youTubePlayerCurrentTimeSlide('player');" class="slider">
+        
             </div>
         </section>
 

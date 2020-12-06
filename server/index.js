@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // 스크롤 업
-    $("*").animate({scrollTop: 0}, 1);
+    $("*").animate({scrollTop: 567*2}, 1);
 
     function stars(){
         var count = 30;

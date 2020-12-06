@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 function createPlayer(div_tag, id, height, width, index) {
+=======
+function createPlayer(div_tag, id, height, width) {
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
     'use strict';
 
     var videoId = id;
@@ -26,11 +30,14 @@ function createPlayer(div_tag, id, height, width, index) {
 
 
     function onStateChange(event) {
+<<<<<<< HEAD
         if(youTubePlayerState(player)==1){
             if(window.player != player){
                 window.swiper.slideTo(player.personalPlayer.index);
             }
         }
+=======
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
         var volume = Math.round(event.target.getVolume());
         var volumeItem = document.getElementById(youTubePlayerVolumeItemId);
 
@@ -46,7 +53,11 @@ function createPlayer(div_tag, id, height, width, index) {
                                 name: name,
                                 playerVars: {'autohide': 1,
                                                 'cc_load_policy': 0,
+<<<<<<< HEAD
                                                 'controls':0,
+=======
+                                                'controls':1,
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
                                                 'disablekb': 0,
                                                 'iv_load_policy': 0,
                                                 'modestbranding': 0,
@@ -68,7 +79,10 @@ function createPlayer(div_tag, id, height, width, index) {
     // Add private data to the YouTube object
     player.personalPlayer = {'currentTimeSliding': false,
                                     'id':id,
+<<<<<<< HEAD
                                     'index':index,
+=======
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
                                     'errors': []
                             };
 
@@ -110,6 +124,10 @@ function youTubePlayerPlay(player) {
 
 function youTubePlayerStop(player) {
     'use strict';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
     if (youTubePlayerActive(player)) {
         player.stopVideo();
         player.clearVideo();
@@ -122,13 +140,17 @@ function youTubePlayerPercent(player){
         current = player.getCurrentTime()
         console.log(current*100/total)
         return current*100/total
+<<<<<<< HEAD
     }else{
         return null
+=======
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
     }
 }
 
 // Add time slider
 
+<<<<<<< HEAD
 function youTubePlayerCurrentTimeChange(currentTime) {
     'use strict';
     console.log("time_player",window.player)
@@ -145,6 +167,24 @@ function youTubePlayerCurrentTimeSlide() {
     console.log("slider",window.player)
 
     window.player.personalPlayer.currentTimeSliding = true;
+=======
+function youTubePlayerCurrentTimeChange(player, currentTime) {
+    'use strict';
+    console.log("time_player",player)
+    console.log("time_cur",currentTime)
+
+    // player.personalPlayer.currentTimeSliding = false;
+    // if (youTubePlayerActive()) {
+    //     player.seekTo(currentTime*player.getDuration()/100, true);
+    // }
+}
+
+function youTubePlayerCurrentTimeSlide(player) {
+    'use strict';
+    console.log("slider",player)
+
+    // player.personalPlayer.currentTimeSliding = true;
+>>>>>>> 97525aa63a3a2abf780a2b6d244d5cf3b1eb4d7b
 }
 
 
