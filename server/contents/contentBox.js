@@ -1,5 +1,5 @@
 var tester = true;
-function createContentBox(parentNode, youtube_id){
+function createContentBox(parentNode, youtube_id, index){
     // parentNode will be jquery elem
     // id will be number or youtube 
     var player;
@@ -10,7 +10,7 @@ function createContentBox(parentNode, youtube_id){
     var youtube_video = '<div id="video-' + youtube_id + '"></div>'
     youtube_video = $(youtube_video)
     youtube_video.appendTo(parentNode)
-    player = createPlayer("video-"+youtube_id, code, "150", "150")
+    player = createPlayer("video-"+youtube_id, code, "150", "150", index)
     player_tag = "#video-"+youtube_id
     $(player_tag).appendTo(parentNode)
     parentNode.data("player",player)

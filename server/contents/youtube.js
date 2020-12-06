@@ -1,4 +1,4 @@
-function createPlayer(div_tag, id, height, width) {
+function createPlayer(div_tag, id, height, width, index) {
     'use strict';
 
     var videoId = id;
@@ -26,6 +26,11 @@ function createPlayer(div_tag, id, height, width) {
 
 
     function onStateChange(event) {
+        if(youTubePlayerState(player)==1){
+            if(window.player != player){
+                window.swiper.slideTo(player.personalPlayer.index)
+            }
+        }
         var volume = Math.round(event.target.getVolume());
         var volumeItem = document.getElementById(youTubePlayerVolumeItemId);
 
@@ -63,6 +68,7 @@ function createPlayer(div_tag, id, height, width) {
     // Add private data to the YouTube object
     player.personalPlayer = {'currentTimeSliding': false,
                                     'id':id,
+                                    'index':index,
                                     'errors': []
                             };
 

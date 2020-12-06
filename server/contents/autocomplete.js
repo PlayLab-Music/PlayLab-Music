@@ -1,4 +1,4 @@
-function autocomplete(swiper, sugLists){
+function autocomplete(sugLists){
     //input     arr   '["a-b","c-d"]'
     //return    li.appendTo('auto-box') 
     function clearAll(){
@@ -31,11 +31,11 @@ function autocomplete(swiper, sugLists){
                     data: param,
                     dataType: 'json',
                     success: function(data){
-                            appendSliders(swiper, data);
+                            appendSliders(data);
                     },
                     error: function(){
                         dbInfos = [["bqfOALK0qnc","dsadsadasfafsafsadcz","fasddcczvcdva"],["GP5t5ZYfgZw","1","1"],["XSj14Bg3cPE","2","2"],["JBMpAOuDLbg","3","3"], ["O1JUyyNHROc","4","4"],["X_sR3nyL-q8","5","5"], ["7kII76zHLRg","6","6"], ["LvANkO6Wfjc","7","7"], ["GHb5ox62bKM","8","8"]]
-                        appendSliders(swiper, dbInfos)
+                        appendSliders(dbInfos)
                     }
                 });
           

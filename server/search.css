@@ -219,6 +219,8 @@ body {
 .SetCenter{text-align:center;}
 .SetDisplayNone{display:none;}
 
+
+/* auto-complete */
 #auto-box{
 	position: absolute;
 	overflow-y: auto;
@@ -235,6 +237,7 @@ body {
 	background: rgb(240, 183, 235, 0.1);
 	margin-bottom: 1px;
 	font-size: 15px;
+	color: rgb(255,255,255,0.8);
 }
 #auto-box li:hover{
 	background: rgb(240, 183, 235);

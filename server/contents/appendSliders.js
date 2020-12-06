@@ -1,8 +1,9 @@
-function appendSliders(swiper, db_infos){
+function appendSliders(db_infos){
     // db_infos = [(youtube_id, title, singer), (youtube_id, title, singer),...]
-
+    
     var infos = db_infos;
     var players = [];
+    clearSwiperSlides()
     if(onYouTubeIframeAPIReady){
         window.YT.ready(function(){
             for(var i in infos){
@@ -26,18 +27,25 @@ function appendSliders(swiper, db_infos){
     
 
                 info_tag.appendTo(content_tag);
+                info_tag.hide()
                 content_tag.appendTo(swiper_slide);
                 swiper_slide.appendTo($(".swiper-wrapper"));
-                swiper.appendSlide(swiper_slide.get(0))
-                var pl = createContentBox($(content_tag), youtubeId);
+                window.swiper.appendSlide(swiper_slide.get(0))
+                var pl = createContentBox($(content_tag), youtubeId, i);
                 //players.push(pl);
-                swiper.update()
+                window.swiper.update()
             };
             window.player = getPlayer()
             setPlayerInfo();
         });
-    };
+    }else{
+        alert("YouTube API is not Ready!")
+    }
 };
+
+function clearSwiperSlides(){
+    window.swiper.removeAllSlides()
+}
 
 function getSwiperContent(){
     return $(".swiper-slide-active").find(".swiper-content")
@@ -60,5 +68,12 @@ function setPlayerInfo(){
     if(title && singer){
         $(".player-title").text(title);
         $(".player-singer").text(singer);
+    }
+}
+
+function setPlayer(){
+    if(getPlayer()){
+        youTubePlayerStop(window.player);
+        window.player = getPlayer()
     }
 }
