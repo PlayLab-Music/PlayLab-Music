@@ -15,18 +15,6 @@ body {
     line-height: 1.6;
     height: 100vh;
 }
-.container {
-    width: 100%;
-    height: 100%;
-    /* display: flex;
-    flex-direction: column; */
-    /* overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth; */
-    /* background-image: url("./imgs/back.png");
-    background-size: cover;
-    background-position: 0px 0px; */
-}
 section {
     scroll-behavior: smooth;
     display: flex;
@@ -104,34 +92,97 @@ section {
 
 
 /* 배경화면 관련 */
-#background{
+/* #background{
     width: 100%;
-    height: 100%;
+    height: 400%;
     position : fixed;
-    /* background-image: url("./imgs/mountain_prince.png");
-    background-repeat: no-repeat; */
     background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
-    /* background-image: url("./imgs/back.png");
-    background-size: cover;
-    background-position: 0px 0px; */
     z-index : -1;
+} */
+/* #prince{
+    position: fixed;
+    pointer-events: none;
+    transform: scale(0.2);
+    height:10vh;
+    width:10vw;
+    top:65vh;
+    left: 60vw;
 }
 #mountain{
-    /* right : 1000px; */
     width : 100%;
     height:100%;
     position : fixed;
     background-size: cover;
     z-index : -1;
+} */
+.container {
+    width: 100%;
+    /* 구획의 개수만큼.. 100을 곱할 것. */
+    height: calc(100% * 4); 
+
+    /* display: flex;
+    flex-direction: column; */
+    /* overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth; */
+    /* background-image: url("./imgs/back.png");
+    background-size: cover;
+    background-position: 0px 0px; */
+    
+    background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
+
+    z-index : -3;
+}
+.littlePrince{
+    position: fixed;
+    pointer-events: none;
+    transform: scale(0.2);
+    height:10vh;
+    width:10vw;
+    top: 55vh;
+    left: 75vw;
+    z-index : -1;
+}
+.mountain img{
+    position : fixed;
+    background-size: cover;
+    width : 100%;
+    height: 100%;
+    z-index : -1;
+}
+.container i{
+    position : fixed;
+    background: rgb(235, 160, 189);
+    border-radius: 50%;
+    animation: animate linear infinite;
+
+    z-index : -2;
+}
+@keyframes animate{
+    0%
+    {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10%,90%
+    {
+        opacity: 0.9;
+    }
+    100%
+    {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
 }
 
-
 /* 1번 구획(HOME) 관련 */
+
 #home a{
     text-decoration: none;
     color : white;
     font-weight: 700;
 
+    margin-top : 100px;
     padding : 3px 8px;
 
     border : 2px solid rgba(0, 255, 255, 0.5);
@@ -198,28 +249,36 @@ section {
     border : 1px solid black;
 }
 #userName{
+    font-family: Arial, Helvetica, sans-serif;
     width : 100%;
-    height : 15%;
+    height : 50px;
     margin-bottom: 15px;
+    padding : 10px;
 
     font-size : 1.3rem;
+    resize:none;
+    overflow:hidden;
 }
 #userEmail{
+    font-family: Arial, Helvetica, sans-serif;
     width : 100%;
-    height : 15%;
+    height : 50px;
     margin-bottom: 15px;
+    padding : 10px;
 
     font-size : 1.3rem;
+    resize:none;
+    overflow:hidden;
 }
 #userComment{
     font-family: Arial, Helvetica, sans-serif;
     width : 100%;
     height : 40vh;
     margin-bottom: 15px;
+    padding : 10px;
 
     font-size : 1rem;
     line-height: 1.2;
-    
 
     resize:none;
 }
