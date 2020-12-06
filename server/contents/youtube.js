@@ -28,7 +28,7 @@ function createPlayer(div_tag, id, height, width, index) {
     function onStateChange(event) {
         if(youTubePlayerState(player)==1){
             if(window.player != player){
-                window.swiper.slideTo(player.personalPlayer.index)
+                window.swiper.slideTo(player.personalPlayer.index);
             }
         }
         var volume = Math.round(event.target.getVolume());
@@ -46,7 +46,7 @@ function createPlayer(div_tag, id, height, width, index) {
                                 name: name,
                                 playerVars: {'autohide': 1,
                                                 'cc_load_policy': 0,
-                                                'controls':1,
+                                                'controls':0,
                                                 'disablekb': 0,
                                                 'iv_load_policy': 0,
                                                 'modestbranding': 0,
@@ -110,7 +110,6 @@ function youTubePlayerPlay(player) {
 
 function youTubePlayerStop(player) {
     'use strict';
-
     if (youTubePlayerActive(player)) {
         player.stopVideo();
         player.clearVideo();
@@ -123,27 +122,29 @@ function youTubePlayerPercent(player){
         current = player.getCurrentTime()
         console.log(current*100/total)
         return current*100/total
+    }else{
+        return null
     }
 }
 
 // Add time slider
 
-function youTubePlayerCurrentTimeChange(player, currentTime) {
+function youTubePlayerCurrentTimeChange(currentTime) {
     'use strict';
-    console.log("time_player",player)
+    console.log("time_player",window.player)
     console.log("time_cur",currentTime)
 
-    // player.personalPlayer.currentTimeSliding = false;
-    // if (youTubePlayerActive()) {
-    //     player.seekTo(currentTime*player.getDuration()/100, true);
-    // }
+    player.personalPlayer.currentTimeSliding = false;
+    if (youTubePlayerActive(window.player)) {
+        window.player.seekTo(currentTime*window.player.getDuration()/100, true);
+    }
 }
 
-function youTubePlayerCurrentTimeSlide(player) {
+function youTubePlayerCurrentTimeSlide() {
     'use strict';
-    console.log("slider",player)
+    console.log("slider",window.player)
 
-    // player.personalPlayer.currentTimeSliding = true;
+    window.player.personalPlayer.currentTimeSliding = true;
 }
 
 

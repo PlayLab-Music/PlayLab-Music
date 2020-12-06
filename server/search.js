@@ -66,15 +66,28 @@ $(document).ready(function () {
     $('.swiper-wrapper').show()
   })
 
+  // 현재 재생 상태를 확인하고 클릭한 유튜브가 있을경우 그쪽으로 이동
   if(window.player != null){
     window.player.onStateChange()
   }
+
   // 유튜브 슬라이드를 옮길때마다 제목과 가수 입력하고 현재 재생목록에 추가하기 
   // 함수는 appendSliders.js에 있음
   window.swiper.on('transitionEnd', function(e){
     setPlayer();
     setPlayerInfo();   
   });
-});
+
+  // time-slider 시간에 맞춰 이동시키기
+  setInterval(function(){
+    if(youTubePlayerActive(window.player)){
+      var cur_percentage = youTubePlayerPercent(window.player);
+      if(cur_percentage != null){
+        $("#YouTube-player-progress").get(0).value = String(cur_percentage);
+      }
+    }
+  }, 500);
+    
+})
 
 
