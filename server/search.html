@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="search.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -18,8 +18,8 @@
     <script src="./contents/autocomplete.js"></script>
     <script src="./contents/youtube.js"></script>
     <script src="./contents/contentBox.js"></script>
-    <script src="./contents/appendContents.js"></script>
     <script src="./contents/appendSliders.js"></script>
+    <script src="./contents/backend.js"></script>
     
     <script type="module" src="./search.js" defer></script>
     
@@ -36,19 +36,24 @@
         <section id="search">
             <div id="search-container">
                 <!-- <h1>Recommand Songs</h1> -->
-                <div id="PnlSearch">
-                    <input type="text" placeholder="e.g bad guy - Billie Eilish" id="TxtSearch" class="search-bar" autocomplete="off"></input>
-                    <svg class="search-border" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" viewBox="0 0 671 111" xml:space="preserve">
-                        <path class="border" d="M335.5,108.5h-280c-29.3,0-53-23.7-53-53v0c0-29.3,23.7-53,53-53h280"/>
-                        <path class="border" d="M335.5,108.5h280c29.3,0,53-23.7,53-53v0c0-29.3-23.7-53-53-53h-280"/>
-                    </svg>
-                    <div id="BtnSearch" class="go-icon">
-                        <i class="fa fa-arrow-right"></i>
+                <div id="search-box">
+                    <div id="search-wrapper">
+                        <input type="text" placeholder="e.g bad guy - Billie Eilish" id="txt-search" class="search-bar" autocomplete="off"></input>
                     </div>
-                    <div id="auto-box">
+                    <div class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </div>
 
+                    <div class="cancel-btn">
+                        <i class="fas fa-times"></i>
                     </div>
+
+                    <div id="auto-box"></div>
                 </div>
+            </div>
+
+
+            <div id="swiper">
                 
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
