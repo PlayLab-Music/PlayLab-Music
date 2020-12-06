@@ -13,7 +13,25 @@ body {
 
     color: white;
     line-height: 1.6;
-    height: 100vh;
+    /* height: 100vh; */
+}
+.container {
+    width: 100%;
+    /* 구획의 개수만큼.. 100을 곱할 것. */
+    /* height: calc(100% * 4);  */
+
+    /* display: flex;
+    flex-direction: column; */
+    /* overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth; */
+    /* background-image: url("./imgs/back.png");
+    background-size: cover;
+    background-position: 0px 0px; */
+    
+    background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
+
+    z-index : 1;
 }
 section {
     scroll-behavior: smooth;
@@ -115,32 +133,14 @@ section {
     background-size: cover;
     z-index : -1;
 } */
-.container {
-    width: 100%;
-    /* 구획의 개수만큼.. 100을 곱할 것. */
-    height: calc(100% * 4); 
-
-    /* display: flex;
-    flex-direction: column; */
-    /* overflow-y: scroll;
-    overflow-x: hidden;
-    scroll-behavior: smooth; */
-    /* background-image: url("./imgs/back.png");
-    background-size: cover;
-    background-position: 0px 0px; */
-    
-    background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
-
-    z-index : -3;
-}
 .littlePrince{
     position: fixed;
     pointer-events: none;
     transform: scale(0.2);
     height:10vh;
     width:10vw;
-    top: 55vh;
-    left: 75vw;
+    bottom: 35vh;
+    right: 15vw;
     z-index : -1;
 }
 .mountain img{
