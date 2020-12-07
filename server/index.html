@@ -17,10 +17,10 @@
 <body>
     <div class="container">
         <div class="navbar">
-            <a href="#home" class="logo">PlayLab</a>
+            <a href="#page1" class="logo">PlayLab</a>
             <ul>
-                <li><a href="#aboutUs">Team</a></li>
-                <li><a href="#contactUs">Contact</a></li>
+                <li><a href="#page2">Team</a></li>
+                <li><a href="#page3">Contact</a></li>
             </ul>
         </div>
 
@@ -28,8 +28,9 @@
         <div class="mountain"><img src="./imgs/mountain3.png"></div>
 
         <div id="fullpage">
-            <div class="section">
-                <section id="home">
+            <div class="section" id="home" data-anchor="page1">
+                <!-- <section id="home"> -->
+                <section>
                     <div class="title">
                         <h1>Music is a world</h1> 
                         <h1>within ourselves</h1>
@@ -45,8 +46,9 @@
                 </section>
             </div>
             
-            <div class="section">
-                <section id="aboutUs">
+            <div class="section" id="aboutUs" data-anchor="page2">
+                <!-- <section id="aboutUs"> -->
+                <section>
                     <div class="section-title">TEAM</div>
                     <div class="card-container">
                         <div class="card-box">
@@ -120,8 +122,9 @@
                 </section>
             </div>
             
-            <div class="section">
-                <section id="contactUs">
+            <div class="section" id="contactUs" data-anchor="page3">
+                <!-- <section id="contactUs"> -->
+                <section>
                     <div class="section-container">
                         <div class="section-title">CONTACT</div>    
                         <div class="contactContainer">
@@ -135,7 +138,7 @@
                 </section>
             </div>
             
-            <div class="section">
+            <div class="section" data-anchor="page4">
                 <section id="end">
                     end
                 </section>
@@ -143,5 +146,45 @@
         </div>
     
     <script type="text/javascript" src="fullpage.js"></script>
+    <script>
+	    new fullpage('#fullpage', {
+            //이동
+            // menu: '#menu',
+            // lockAnchors: false,
+            anchors:['page1', 'page2', 'page3', 'page4'],
+            // navigation: true,
+            // navigationPosition: 'right',
+            // navigationTooltips: ['firstSlide', 'secondSlide'],
+            // showActiveTooltip: false,
+            // slidesNavigation: true,
+            // slidesNavPosition: 'bottom',
+            //스크롤
+            css3: true,
+            scrollingSpeed: 700,
+            autoScrolling: true,
+            fitToSection: true,
+            fitToSectionDelay: 1000,
+            scrollBar: false,
+            easing: 'easeInOutCubic',
+            easingcss3: 'ease',
+            loopBottom: false,
+            loopTop: false,
+            loopHorizontal: true,
+            continuousVertical: false,
+            continuousHorizontal: false,
+            scrollHorizontally: false,
+            interlockedSlides: false,
+            dragAndMove: false,
+            offsetSections: false,
+            resetSliders: false,
+            fadingEffect: false,
+            normalScrollElements: '#element1, .element2',
+            scrollOverflow: false,
+            scrollOverflowReset: false,
+            scrollOverflowOptions: null,
+            touchSensitivity: 15,
+            bigSectionsDestination: null
+        });
+    </script>
 </body>
 </html>
