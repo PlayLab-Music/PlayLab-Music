@@ -28,9 +28,13 @@ body {
     /* background-image: url("./imgs/back.png");
     background-size: cover;
     background-position: 0px 0px; */
+    scroll-behavior: smooth;
     
     background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
 
+    z-index : 1;
+}
+#fullpage{
     z-index : 1;
 }
 section {
@@ -68,6 +72,8 @@ section {
     height : 60px;
 
     background : #000;
+
+    z-index : 2;
 }
 .navbar .logo{
     /* display:flex; */
