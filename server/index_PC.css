@@ -52,13 +52,6 @@ section {
     margin-bottom: 50px;
     border-bottom: 3px solid rgba(0, 255, 255, 1);
 }
-.section-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width : 50%;
-}
 
 
 /* 내비게이션바 관련 */
@@ -182,7 +175,6 @@ section {
 }
 
 /* 1번 구획(HOME) 관련 */
-
 #home a{
     text-decoration: none;
     color : white;
@@ -243,8 +235,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    width : 100%;   
+    align-items: center;
+    width : 50%;
 }
 .contactContainer *{
     border : 0;
