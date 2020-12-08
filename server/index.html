@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no,maximum-scale=1,width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <link rel="stylesheet" type="text/css" href="fullpage.css" />
-    <link rel="stylesheet" href="index.css" media="screen and (max-width: 1024px)">
-    <link rel="stylesheet" href="index_PC.css" media="screen and (min-width: 1025px)">
+    <link rel="stylesheet" href="index.css" media="screen and (max-width: 800px)">
+    <link rel="stylesheet" href="index_PC.css" media="screen and (min-width: 801px)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -125,11 +128,12 @@
             <div class="section" id="contactUs" data-anchor="page3">
                 <!-- <section id="contactUs"> -->
                 <section>
-                    <div class="section-title">CONTACT</div>    
+                    <div class="section-title">CONTACT</div>
                     <div class="contactContainer">
-                        <textarea id="userName" rows="1" placeholder="Name"></textarea>
-                        <textarea id="userEmail" rows="1" placeholder="Email"></textarea>
+                        <input type="text" id="userName" rows="1" placeholder="Name"></textarea>
+                        <input type="email" id="userEmail" rows="1" placeholder="Email"></textarea>
                         <textarea id="userComment" rows="5" placeholder="Message"></textarea>
+                        <!-- <input type="text" id="userComment" rows="5" placeholder="Message"></input> -->
                     </div>
                     <button>SEND</button>
                 
@@ -161,7 +165,7 @@
             scrollingSpeed: 700,
             autoScrolling: true,
             fitToSection: true,
-            fitToSectionDelay: 1000,
+            fitToSectionDelay: 700,
             scrollBar: false,
             easing: 'easeInOutCubic',
             easingcss3: 'ease',
