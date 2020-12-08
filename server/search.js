@@ -57,13 +57,13 @@ $(document).ready(function () {
   })
 
   // 현재 재생 상태를 확인하고 클릭한 유튜브가 있을경우 그쪽으로 이동
-  if(window.player != null){
-    window.player.onStateChange()
-  }
+  // if(window.player != null){
+  //   window.player.onStateChange()
+  // }
 
   // 유튜브 슬라이드를 옮길때마다 제목과 가수 입력하고 현재 재생목록에 추가하기 
   // 함수는 appendSliders.js에 있음
-  window.swiper.on('transitionEnd', function(e){
+  window.swiper.on('transitionStart', function(e){
     setPlayer();
     setPlayerInfo();   
   });
@@ -120,6 +120,10 @@ $(document).ready(function () {
         youTubePlayerPlay(window.player);
         togglePlayBtn("play");
       }
+      if(window.player == null){
+
+        $(".seek-fill").css("width", "0%");
+      }
   }
 
   function updateProgress(){
@@ -134,15 +138,11 @@ $(document).ready(function () {
     }
   }
   
-
-  function autoPlay(state, currentPercent){
-    if(state==true){
-      if(currentPercent>99.9){
-        setNextPlayer()
-        
-      }
-    }
+  function tester(){
+    console.log("test")
   }
+  
+  console.log(window.player.onStateChange())
 
   function togglePlayBtn(toState){
     if(toState == "play"){

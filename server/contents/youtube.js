@@ -26,10 +26,17 @@ function createPlayer(div_tag, id, height, width, index) {
 
 
     function onStateChange(event) {
+        // 향후 이벤트에 함수적용하여 search.js로 빼낼 예정
         if(youTubePlayerState(player)==1){
             if(window.player != player){
                 window.swiper.slideTo(player.personalPlayer.index);
             }
+        }
+        if(youTubePlayerState(player)==0){
+            if(window.swiper.slideNext()){
+                youTubePlayerPlay(window.player)
+            }
+            
         }
         var volume = Math.round(event.target.getVolume());
         var volumeItem = document.getElementById(youTubePlayerVolumeItemId);
@@ -37,6 +44,7 @@ function createPlayer(div_tag, id, height, width, index) {
         if (volumeItem && (Math.round(volumeItem.value) != volume)) {
             volumeItem.value = volume;
         }
+        return event
     }
 
     var player = new YT.Player(div_tag,
