@@ -16,7 +16,6 @@ body {
 
 
 /* background */
-
 /* background image */
 .container {
     width: 100%;
@@ -24,18 +23,23 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    background-image: url("./imgs/back.png");
+    /* background-image: url("./imgs/back.png"); */
+    background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
     background-size: cover;
     background-position: 0px 0px;
+
+    z-index : 0;
 }
 
 /* background stars and prince and mountain*/
 
 .container i{
-    position: absolute;
+    position: fixed;
     background: rgb(235, 160, 189);
     border-radius: 50%;
     animation: animate linear infinite;
+
+    z-index : 1;
 }
 
 @keyframes animate{
@@ -61,22 +65,27 @@ body {
     transform: scale(0.2);
     height:10vh;
     width:10vw;
-    top:65vh;
-    left: 60vw;
-    z-index: 0;
-    
+    bottom :36vh;
+    right : 20vw;
+
+    z-index : 2;
 }
 
 /* not uploaded yet */
-.mountain{
+/* .mountain{
     position: fixed;
     pointer-events: none;
     bottom: 0;
-    height: 0vh;
-    width: 200%;
-    z-index: 5;
+    width:100%;
+    height:100%;
+} */
+.mountain img{
+    position : fixed;
+    background-size: cover;
+    width : 100%;
+    height: 100%;
+    z-index : 2;
 }
-
 
 
 /* navbar with sticky */
@@ -90,8 +99,9 @@ body {
     align-items: center;
     transition: 0.6s;
     padding: 10px 20px;
-    z-index: 20;
+    background: rgb(0, 0, 0);
 
+    z-index : 50;
 }
 
 .navbar.sticky{
@@ -116,6 +126,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    margin-right : 2vw;
 }
 
 .navbar ul li{
@@ -134,7 +146,10 @@ body {
     transition:  0.6;
 }
 
-
+/* fullpage css */
+#fullpage{
+    z-index : 5;
+}
 
 
 /* section css */
@@ -147,20 +162,25 @@ section {
     justify-content: center;
     text-align: center;
     width: 100%;
-    height: 100vh;
+    height: 60vh;
+    margin : auto auto;
 
-    z-index: 10;
+    z-index : 5;
 }
 
-section .title{
-    position: relative;
+#home .title{
+    /* position: relative;
     top: -40px;
+    justify-self: flex-start; */
+    display:flex;
+    flex-direction: column;
     justify-self: flex-start;
 }
 
 section h1{
     width:100%;
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
+    font-size : 8vw;
     justify-content: left;
     margin-top: 10px;
 }
@@ -169,11 +189,16 @@ section p{
     position: relative;
     width: 100%;
     font-weight: lighter;
+    font-size : vw;
+    margin : 2vh 0;
 }
 
 .section-title{
     position: relative;
     font-size: 30px;
+    padding : 2vh 0;
+    border-bottom: 3px solid rgba(0, 255, 255, 0.7);
+    margin-bottom: 3vh;
 }
 
 
@@ -190,14 +215,16 @@ section p{
     color: #fff;
     font-size: larger;
     font-weight: 600;
-    left: -50px;
-    top: 10px;
-    width: 150px;
-    height: 6vh;
+    left: -12vw;
+    /* top: 10px; */
+    /* width: 150px; */
+    width : 35vw;
+    height: 7vw;
     transition: 0.5s;
-    padding-top: 3px;
-    border: solid 0.2px rgb(252, 172, 255);
-    border-radius: 3px;
+    padding: 20px 0;
+    margin-top : 8vh;
+    border: solid 0.5px rgba(0, 255, 255, 0.6);
+    border-radius: 10px;
     opacity: 1;
 }
 
@@ -215,17 +242,18 @@ section p{
     height: 100%;
 } 
 
-#aboutUs.section-title{
-    position: relative;
-    margin-top: 30px;
+#aboutUs .section-title{
+    /* position: relative; */
+    padding-bottom : 1vh;
+    margin-bottom: 1.5vh;
 }
 
 .card-container{
     display: flex;
     width: 100%;
     flex-direction: column;
-    z-index: 10;
-    margin-top: 20px;
+    margin-top: 2vh;
+    height : 40vh;
 }
 
 .card-box{
@@ -233,29 +261,27 @@ section p{
     width: 100%;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-bottom: 40px;
+    margin-bottom: 2vh;
+    /* height : 12vh; */
 }
 
 .card{
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     width: 80px;
-    height: 100px;
 }
-
-
-.card-img{
-    position: relative;
-}
-
-.card-img img{
-    position: relative;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 10px;
-}
+/* @media screen and (min-height: ) */
+    .card-img, .card-img img{
+        align-items: center;
+        position: relative;
+        width: 8vh;
+        height: 8vh;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 /* .card-img, .card-img img{
     width : 100px;
     height : 100px;
@@ -265,17 +291,20 @@ section p{
 
 .card-content{
     position: relative;
-    top: -5px;
+    height : 7vh;
+
+    display : flex;
+    flex-direction: column;
 }
 
 .card-name{
     position: relative;
-    font-size: 14px;
+    font-size: 0.9em;
 }
 
 .card-role{
     position: relative;
-    font-size: 10px;
+    font-size: 0.6em;
 }
 
 
@@ -288,21 +317,18 @@ section p{
 
 #contactUs .section-title{
     position: relative;
-    margin-top: 30px;
-    margin-bottom: 60px;
-    z-index: 10;
+    margin-bottom: 5vh;
 }
 
 #contactUs .contactContainer{
     position: relative;
     /* margin: auto; */
-    width : 80%;
+    width : 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
-    z-index: 10;
 }
 
 /* #contactUs textarea{
@@ -328,29 +354,29 @@ section p{
 #userName{
     font-family: Arial, Helvetica, sans-serif;
     width : 100%;
-    height : 30px;
+    height : 40px;
     margin-bottom: 15px;
     padding : 10px;
 
-    font-size : 1.3rem;
+    font-size : 1rem;
     resize:none;
     overflow:hidden;
 }
 #userEmail{
     font-family: Arial, Helvetica, sans-serif;
     width : 100%;
-    height : 30px;
+    height : 40px;
     margin-bottom: 15px;
     padding : 10px;
 
-    font-size : 1.3rem;
+    font-size : 0.8rem;
     resize:none;
     overflow:hidden;
 }
 #userComment{
     font-family: Arial, Helvetica, sans-serif;
     width : 100%;
-    height : 40vh;
+    height : 150px;
     margin-bottom: 15px;
     padding : 10px;
 

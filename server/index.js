@@ -3,7 +3,12 @@ $(document).ready(function(){
     $("*").animate({scrollTop: 0}, 1);
 
     function stars(){
+        var windowWidth = $(window).width();
+
         var count = 30;
+        if(windowWidth >= 768){
+            count = 100;
+        }
         var scene = $(".container").get(0)
         var i = 0;
         while(i<count){
@@ -19,6 +24,7 @@ $(document).ready(function(){
             star.style.height = 1+size+"px"
             star.style.animationDuration = 5 + duration + 's'
             star.style.animationDelay = duration + 's'
+            star.style.zIndex = 1
 
             scene.appendChild(star);
             i++;
@@ -26,19 +32,19 @@ $(document).ready(function(){
     }
     stars();
 
-    $("*").scroll(function(){
-        var curY = this.scrollTop
-        var main = $(".container").get(0)
-        main.style.backgroundPosition = `-${curY * .25}px 0px`
+    // $("*").scroll(function(){
+    //     var curY = this.scrollTop
+    //     var main = $(".container").get(0)
+    //     main.style.backgroundPosition = `-${curY * .25}px 0px`
     
-        var navbar = $(".navbar").get(0);
-        navbar.classList.toggle("sticky", curY > 0);
-    });
+    //     var navbar = $(".navbar").get(0);
+    //     navbar.classList.toggle("sticky", curY > 0);
+    // });
 
-    $("input").keydown(function(e){
-        console.log(e);
-        $("input").caret(0)
-    })
+    // $("input").keydown(function(e){
+    //     console.log(e);
+    //     $("input").caret(0)
+    // })
 });
 
           // 자동 재생기능 추가 예정
