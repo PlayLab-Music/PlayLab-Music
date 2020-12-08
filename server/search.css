@@ -10,6 +10,39 @@ html, body {
 }
 
 
+/*  navbar css  */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.navbar.sticky{
+    padding: 5px 20px;
+    background: rgb(0, 0, 0);
+}
+
+.navbar .logo{
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 5px;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+    text-decoration: none;
+}
+
+
 
 
 /* swiper css */
@@ -175,44 +208,11 @@ body {
 
 
 
-/*  navbar css  */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.6s;
-    padding: 10px 20px;
-    z-index: 1000;
-}
-
-.navbar.sticky{
-    padding: 5px 20px;
-    background: rgb(0, 0, 0);
-}
-
-.navbar .logo{
-    position: relative;
-    font-weight: 700;
-    color: #fff;
-    margin-top: 5px;
-    font-size: 1.4em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.6s;
-    text-decoration: none;
-}
-
-
 
 /* controller  css*/
 .controller{
 	position: fixed;
-	bottom: 20px;
+	bottom: 50px;
 	width: 350px;
 	height: 100px;
 	border: #000 solid 3px;
@@ -227,23 +227,35 @@ body {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 10px;
+	width: 100%;
+}
+.player-controller i{
+	position: relative;
+	top: 10%;
+	transform: translateY( -20%);
+	height: 30px;
+	width: 30px;
+	background: none;
+	line-height: 35px;
+	text-align: center;
+	font-size: 20px;
+	cursor: pointer;
+	color: #fff;
 }
 .prev-btn{
 	width: 30px;
 	height: 30px;
-	border: #fff solid 1px;
 }
 .play-btn{
 	width: 30px;
 	height: 30px;
-	border: #fff solid 1px;
 	margin-left: 20px;
 	margin-right: 20px;
+	z-index: 10;
 }
 .next-btn{
 	width: 30px;
 	height: 30px;
-	border: #fff solid 1px;
 }
 .seek-wrapper{
 	width: 100%;
@@ -259,7 +271,7 @@ body {
 }
 
 .seek-fill{
-	width: 10%;
+	width: 0%;
 	height: 5px; 
 	border-radius: 20px;
 	background: violet;
@@ -267,6 +279,9 @@ body {
 
 
 .player-info{
+	position: relative;
+	display: flex;
+	flex-direction: column;
 	color: #fff;
 }
 .player-title{

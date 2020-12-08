@@ -129,14 +129,14 @@ function youTubePlayerPercent(player){
 
 // Add time slider
 
-function youTubePlayerCurrentTimeChange(currentTime) {
+function youTubePlayerCurrentTimeChange(currentTimePercent) {
     'use strict';
     console.log("time_player",window.player)
-    console.log("time_cur",currentTime)
+    console.log("time_cur",currentTimePercent)
 
     player.personalPlayer.currentTimeSliding = false;
     if (youTubePlayerActive(window.player)) {
-        window.player.seekTo(currentTime*window.player.getDuration()/100, true);
+        window.player.seekTo(currentTimePercent*window.player.getDuration()/100, true);
     }
 }
 

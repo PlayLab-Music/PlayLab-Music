@@ -67,23 +67,50 @@ $(document).ready(function () {
     setPlayerInfo();   
   });
 
-  $(".seek-bar").mousedown(function (e) { 
-    var x = e.clientX
-    console.log($(this))
-    $(".seek-fill").css("width", x)
-    
-  });
+  // controller 
+  $(".play-btn").click(changePlayerState)
 
-  // time-slider 시간에 맞춰 이동시키기
-  setInterval(function(){
-    if(youTubePlayerActive(window.player)){
-      var cur_percentage = youTubePlayerPercent(window.player);
-      if(cur_percentage != null){
-        $("#YouTube-player-progress").get(0).value = String(cur_percentage);
-      }
+  // time slider 구현하기
+  var isMouseDown = true;
+  $(".seek-bar").click(changeProgress);
+
+  
+  setInterval(updateProgress,100)
+    
+
+  function changePlayerState(e){
+    console.log(e)
+    //$(".play-btn").class
+    if(youTubePlayerState(window.player)==1){
+      youTubePlayerPause(window.player);
+      $(".fas.fa-pause").removeClass('fa-pause').addClass('fa-play');
+    }else{
+      youTubePlayerPlay(window.player);
+      $(".fas.fa-play").removeClass('fa-play').addClass('fa-pause')
     }
-  }, 1000);
-    
-})
+  }
+  
+  function changeProgress(e){
+    console.log("a")
+      if(isMouseDown){
+        var width = this.clientWidth;
+        var clickX = e.offsetX
+        var current_percent = clickX/width*100
+        $(".seek-fill").css("width", current_percent+"%")
+        youTubePlayerCurrentTimeChange(current_percent)
+        youTubePlayerPlay(window.player)
+        $(".fas.fa-play").removeClass('fa-play').addClass('fa-pause')
+      }
+  }
 
+  function updateProgress(){
+    if(window.player && youTubePlayerState(window.player)==1){
+      var currenPercent = youTubePlayerPercent(window.player)
+      $(".seek-fill").css("width", currenPercent+"%")
+    }
+  }
+  
+
+
+})
 
