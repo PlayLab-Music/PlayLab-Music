@@ -13,6 +13,7 @@ body {
 
     color: white;
     line-height: 1.6;
+    background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
     /* height: 100vh; */
 }
 .container {
@@ -25,12 +26,15 @@ body {
     /* overflow-y: scroll;
     overflow-x: hidden;
     scroll-behavior: smooth; */
-    /* background-image: url("./imgs/back.png");
+    /* background-image: url("./imgs/back.png"); */
     background-size: cover;
-    background-position: 0px 0px; */
+    background-position: 0px 0px;
+    /* scroll-behavior: smooth; */
     
-    background : linear-gradient(180deg,#1F0936 0,#171A67 100%);
 
+    z-index : 1;
+}
+#fullpage{
     z-index : 1;
 }
 section {
@@ -48,13 +52,6 @@ section {
     margin-bottom: 50px;
     border-bottom: 3px solid rgba(0, 255, 255, 1);
 }
-.section-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width : 50%;
-}
 
 
 /* 내비게이션바 관련 */
@@ -68,6 +65,8 @@ section {
     height : 60px;
 
     background : #000;
+
+    z-index : 2;
 }
 .navbar .logo{
     /* display:flex; */
@@ -176,7 +175,6 @@ section {
 }
 
 /* 1번 구획(HOME) 관련 */
-
 #home a{
     text-decoration: none;
     color : white;
@@ -237,8 +235,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    width : 100%;   
+    align-items: center;
+    width : 50%;
 }
 .contactContainer *{
     border : 0;

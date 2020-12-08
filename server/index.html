@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="index_PC.css" media="screen and (min-width: 767px)">
+    <link rel="stylesheet" type="text/css" href="fullpage.css" />
+    <link rel="stylesheet" href="index.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="index_PC.css" media="screen and (min-width: 1025px)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -16,124 +17,172 @@
 <body>
     <div class="container">
         <div class="navbar">
-            <a href="#home" class="logo">PlayLab</a>
+            <a href="#page1" class="logo">PlayLab</a>
             <ul>
-                <li><a href="#aboutUs">Team</a></li>
-                <li><a href="#contactUs">Contact</a></li>
+                <li><a href="#page2">Team</a></li>
+                <li><a href="#page3">Contact</a></li>
             </ul>
         </div>
 
         <div class="littlePrince"><img src="./imgs/prince.png"></div>
         <div class="mountain"><img src="./imgs/mountain3.png"></div>
 
-        <section id="home">
-            <div class="title">
-                <h1>Music is a world</h1> 
-                <h1>within ourselves</h1>
-                <p>We can show you it</p>
+        <div id="fullpage">
+            <div class="section" id="home" data-anchor="page1">
+                <!-- <section id="home"> -->
+                <section>
+                    <div class="title">
+                        <h1>Music is a world</h1> 
+                        <h1>within ourselves</h1>
+                        <p>We can show you it</p>
+                    </div>
+                    <a href="./search.html">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div>GET START</div>
+                    </a>
+                </section>
             </div>
-            <a href="./search.html">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <div>GET START</div>
-            </a>
-        </section>
-
-
-        <section id="aboutUs">
-            <div class="section-title">TEAM</div>
-            <div class="card-container">
-                <div class="card-box">
-                    
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="./imgs/bg2.jpg" alt="">
+            
+            <div class="section" id="aboutUs" data-anchor="page2">
+                <!-- <section id="aboutUs"> -->
+                <section>
+                    <div class="section-title">TEAM</div>
+                    <div class="card-container">
+                        <div class="card-box">
+                            
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="./imgs/bg2.jpg" alt="">
+                                </div>
+                                
+                                <div class="card-content">
+                                    <div class="card-name">Jessie</div>
+                                    <div class="card-role">Project Manager</div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="./imgs/bg2.jpg" alt="">
+                                </div>
+                                
+                                <div class="card-content">
+                                    <div class="card-name">Colten</div>
+                                    <div class="card-role">Frontend</div>
+                                </div>
+                            </div>
                         </div>
-                        
-                        <div class="card-content">
-                            <div class="card-name">Jessie</div>
-                            <div class="card-role">Project Manager</div>
+            
+                        <div class="card-box">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="./imgs/yj.jpg" alt="">
+                                </div>
+                                
+                                <div class="card-content">
+                                    <div class="card-name">Elly</div>
+                                    <div class="card-role">Web Designer</div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="./imgs/cy.jpg" alt="">
+                                </div>
+                                
+                                <div class="card-content">
+                                    <div class="card-name">Phant</div>
+                                    <div class="card-role">AI Engineer</div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="./imgs/bg2.jpg" alt="">
-                        </div>
-                        
-                        <div class="card-content">
-                            <div class="card-name">Colten</div>
-                            <div class="card-role">Frontend</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-box">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="./imgs/yj.jpg" alt="">
-                        </div>
-                        
-                        <div class="card-content">
-                            <div class="card-name">Elly</div>
-                            <div class="card-role">Web Designer</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="./imgs/cy.jpg" alt="">
-                        </div>
-                        
-                        <div class="card-content">
-                            <div class="card-name">Phant</div>
-                            <div class="card-role">AI Engineer</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-box">
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="./imgs/bg2.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <div class="card-name">Null</div>
-                            <div class="card-role">Backend</div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-img">
-                            <img src="./imgs/mc.jpg" alt="">
-                        </div>
-                        <div class="card-content">
-                            <div class="card-name">David</div>
-                            <div class="card-role">Multi-Player</div>
+            
+                        <div class="card-box">
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="./imgs/bg2.jpg" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-name">Null</div>
+                                    <div class="card-role">Backend</div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-img">
+                                    <img src="./imgs/mc.jpg" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-name">David</div>
+                                    <div class="card-role">Multi-Player</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
-        </section>
-
-
-        <section id="contactUs">
-            <div class="section-container">
-                <div class="section-title">CONTACT</div>    
-                <div class="contactContainer">
-                    <textarea id="userName" rows="1" placeholder="Name"></textarea>
-                    <textarea id="userEmail" rows="1" placeholder="Email"></textarea>
-                    <textarea id="userComment" rows="5" placeholder="Message"></textarea>
-                </div>
-                <button>SEND</button>
+            
+            <div class="section" id="contactUs" data-anchor="page3">
+                <!-- <section id="contactUs"> -->
+                <section>
+                    <div class="section-title">CONTACT</div>    
+                    <div class="contactContainer">
+                        <textarea id="userName" rows="1" placeholder="Name"></textarea>
+                        <textarea id="userEmail" rows="1" placeholder="Email"></textarea>
+                        <textarea id="userComment" rows="5" placeholder="Message"></textarea>
+                    </div>
+                    <button>SEND</button>
+                
+                </section>
             </div>
-        
-        </section>
-
-
-        <section id="end">
-            end
-        </section>
-    </div>
+            
+            <div class="section" data-anchor="page4">
+                <section id="end">
+                    end
+                </section>
+            </div>
+        </div>
     
+    <script type="text/javascript" src="fullpage.js"></script>
+    <script>
+	    new fullpage('#fullpage', {
+            //이동
+            // menu: '#menu',
+            // lockAnchors: false,
+            anchors:['page1', 'page2', 'page3', 'page4'],
+            // navigation: true,
+            // navigationPosition: 'right',
+            // navigationTooltips: ['firstSlide', 'secondSlide'],
+            // showActiveTooltip: false,
+            // slidesNavigation: true,
+            // slidesNavPosition: 'bottom',
+            //스크롤
+            css3: true,
+            scrollingSpeed: 700,
+            autoScrolling: true,
+            fitToSection: true,
+            fitToSectionDelay: 1000,
+            scrollBar: false,
+            easing: 'easeInOutCubic',
+            easingcss3: 'ease',
+            loopBottom: false,
+            loopTop: false,
+            loopHorizontal: true,
+            continuousVertical: false,
+            continuousHorizontal: false,
+            scrollHorizontally: false,
+            interlockedSlides: false,
+            dragAndMove: false,
+            offsetSections: false,
+            resetSliders: false,
+            fadingEffect: false,
+            normalScrollElements: '#element1, .element2',
+            scrollOverflow: false,
+            scrollOverflowReset: false,
+            scrollOverflowOptions: null,
+            touchSensitivity: 15,
+            bigSectionsDestination: null
+        });
+    </script>
 </body>
 </html>
