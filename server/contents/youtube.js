@@ -49,10 +49,11 @@ function createPlayer(div_tag, id, height, width, index) {
                                                 'controls':0,
                                                 'disablekb': 0,
                                                 'iv_load_policy': 0,
-                                                'modestbranding': 0,
+                                                'modestbranding': 1,
+                                                'enablejsapi':1,
                                                 'rel': 0,
-                                                'showinfo': 0,
-
+                                                'fs':1,
+                                                'playsinline': 1,
                                                 'autoplay':0,
                                                 'start': 3
                                             },
@@ -120,7 +121,6 @@ function youTubePlayerPercent(player){
     if (youTubePlayerState(player) == 1){
         total = player.getDuration()
         current = player.getCurrentTime()
-        console.log(current*100/total)
         return current*100/total
     }else{
         return null

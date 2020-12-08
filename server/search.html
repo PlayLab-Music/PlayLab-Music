@@ -40,9 +40,9 @@
                     <div id="search-wrapper">
                         <input type="text" placeholder="e.g bad guy - Billie Eilish" id="txt-search" class="search-bar" autocomplete="off"></input>
                     </div>
-                    <div class="search-btn">
+                    <!-- <div class="search-btn">
                         <i class="fas fa-search"></i>
-                    </div>
+                    </div> -->
 
                     <div class="cancel-btn">
                         <i class="fas fa-times"></i>
@@ -64,15 +64,28 @@
             </div>
             
             <div class="controller">
-                <div class="player-info">
-                    <!-- <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div> -->
-                    <div class="player-title"></div>
-                    <div class="player-singer"></div>
-                </div>    
-                <div id="time-slider">
-                    <input id="YouTube-player-progress" type="range" value="1" min="0" max="100" data-bi="pl" onchange="youTubePlayerCurrentTimeChange(this.value);" oninput="youTubePlayerCurrentTimeSlide();" class="slider">
+                <div class="player-info-wrapper">
+                    <div class="player-thumb"></div>
+                    <div class="player-info">
+                        <!-- <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div> -->
+                        <div class="player-title"></div>
+                        <div class="player-singer"></div>
+                        <div class="player-controller">
+                            <div class="prev-btn"></div>
+                            <div class="play-btn"></div>
+                            <div class="next-btn"></div>
+                        </div>
+                    </div>    
+                <div class="seek-wrapper">
+                    <div class="seek-bar">
+                        <div class="seek-fill"></div>
+                    </div>
                 </div>
+
+                <!-- <div id="time-slider">
+                    <input id="YouTube-player-progress" type="range" value="1" min="0" max="100" data-bi="pl" onchange="youTubePlayerCurrentTimeChange(this.value);" oninput="youTubePlayerCurrentTimeSlide();" class="slider">
+                </div> -->
             </div>
         </section>
 

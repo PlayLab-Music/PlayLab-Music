@@ -67,6 +67,13 @@ $(document).ready(function () {
     setPlayerInfo();   
   });
 
+  $(".seek-bar").mousedown(function (e) { 
+    var x = e.clientX
+    console.log($(this))
+    $(".seek-fill").css("width", x)
+    
+  });
+
   // time-slider 시간에 맞춰 이동시키기
   setInterval(function(){
     if(youTubePlayerActive(window.player)){
@@ -75,7 +82,7 @@ $(document).ready(function () {
         $("#YouTube-player-progress").get(0).value = String(cur_percentage);
       }
     }
-  }, 500);
+  }, 1000);
     
 })
 
