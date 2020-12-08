@@ -5,6 +5,7 @@ function getAutocompletList(param){
         data: param,
         dataType: 'json',
         success: function (data) {
+          console.log(data);
           autocomplete(data);
         },
         error: function () {
