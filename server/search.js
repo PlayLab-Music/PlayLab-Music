@@ -22,6 +22,7 @@ $(document).ready(function () {
   // db_infos 리스트로 검색결과
   window.swiper.removeAllSlides()
   window.player = null;
+  window.isPlaying = false;
 
   //  검색창에 키 입력시 자동완성 입력
   $(".search-bar").keyup(function (e) {
@@ -68,25 +69,43 @@ $(document).ready(function () {
   });
 
   // controller 
+  $(".prev-btn").click(setPrevPlayer)
   $(".play-btn").click(changePlayerState)
+  $(".next-btn").click(setNextPlayer)
 
   // time slider 구현하기
   var isMouseDown = true;
   $(".seek-bar").click(changeProgress);
 
-  
+  $("swiper-slide").click(function(e){console.log(e)})
+
   setInterval(updateProgress,100)
-    
+
+
+
+  function setPrevPlayer(e){
+    if(youTubePlayerPercent(window.player) < 2){
+      window.swiper.slidePrev(500)
+    }else{
+      youTubePlayerCurrentTimeChange(window.player, 0);
+        youTubePlayerPlay(window.player);
+        
+    }
+  }
+
+  function setNextPlayer(e){
+    window.swiper.slideNext(500)
+  }
 
   function changePlayerState(e){
     console.log(e)
     //$(".play-btn").class
     if(youTubePlayerState(window.player)==1){
       youTubePlayerPause(window.player);
-      $(".fas.fa-pause").removeClass('fa-pause').addClass('fa-play');
+      togglePlayBtn("play")
     }else{
       youTubePlayerPlay(window.player);
-      $(".fas.fa-play").removeClass('fa-play').addClass('fa-pause')
+      togglePlayBtn("pause")
     }
   }
   
@@ -94,23 +113,48 @@ $(document).ready(function () {
     console.log("a")
       if(isMouseDown){
         var width = this.clientWidth;
-        var clickX = e.offsetX
-        var current_percent = clickX/width*100
-        $(".seek-fill").css("width", current_percent+"%")
-        youTubePlayerCurrentTimeChange(current_percent)
-        youTubePlayerPlay(window.player)
-        $(".fas.fa-play").removeClass('fa-play').addClass('fa-pause')
+        var clickX = e.offsetX;
+        var current_percent = clickX/width*100;
+        $(".seek-fill").css("width", current_percent+"%");
+        youTubePlayerCurrentTimeChange(window.player, current_percent);
+        youTubePlayerPlay(window.player);
+        togglePlayBtn("play");
       }
   }
 
   function updateProgress(){
     if(window.player && youTubePlayerState(window.player)==1){
-      var currenPercent = youTubePlayerPercent(window.player)
-      $(".seek-fill").css("width", currenPercent+"%")
+      var currentPercent = youTubePlayerPercent(window.player);
+      $(".seek-fill").css("width", currentPercent+"%");
+      togglePlayBtn("play");
+      console.log(currentPercent)
+      //autoPlay(true, currentPercent);
+    }else{
+      togglePlayBtn("pause");
     }
   }
   
 
+  function autoPlay(state, currentPercent){
+    if(state==true){
+      if(currentPercent>99.9){
+        setNextPlayer()
+        
+      }
+    }
+  }
 
+  function togglePlayBtn(toState){
+    if(toState == "play"){
+      $(".fas.fa-play").removeClass('fa-play').addClass('fa-pause');
+      window.isPlaying = true;
+    }else{
+      $(".fas.fa-pause").removeClass('fa-pause').addClass('fa-play');
+      window.isPlaying = false;
+    }
+  }
+  window.swiper.on('transitionStart',function(){
+    $(".seek-fill").css("width", "0%");
+  })
 })
 
